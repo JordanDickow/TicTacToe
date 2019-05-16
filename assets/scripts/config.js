@@ -1,5 +1,8 @@
 'use strict'
 
+'https://tic-tac-toe-wdi.herokuapp.com/'
+'https://tic-tac-toe-wdi-production.herokuapp.com'
+
 let apiUrl
 const apiUrls = {
   production: '<replace-with-heroku-url>',

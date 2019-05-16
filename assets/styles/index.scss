@@ -1,1 +1,11 @@
 @import '~bootstrap/scss/bootstrap';
+h1 {
+  display: flex;
+  justify-content: center;
+}
+
+.col-sm {
+  border-style: solid;
+  height: 150px;
+  marigin: 20px;
+}
