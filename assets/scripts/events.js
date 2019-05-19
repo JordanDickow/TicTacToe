@@ -61,6 +61,7 @@ const onClick = event => {
 
 
 switchPlayer()
+winCombo()
 
   // api.create(formData)
   //   .then(ui.onClickeSuccess)
