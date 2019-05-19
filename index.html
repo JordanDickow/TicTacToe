@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
     <head>
-      <title>Example</title>
+      <title>Tic Tac Toe</title>
+
       <meta name="viewport" content="width=device-width, initial-scale=1">
 
       <!-- Do not add `link` tags-->
@@ -12,6 +13,57 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Browser Template</h1>
+      <h1>Tic Tac Toe</h1>
+      <section>
+        <div class="container">
+  <div class="row">
+    <div class="col-sm" data-cell-index='0'></div>
+    <div class="col-sm" data-cell-index='1'></div>
+    <div class="col-sm" data-cell-index='2'></div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm"data-cell-index='3'></div>
+    <div class="col-sm"data-cell-index='4'></div>
+    <div class="col-sm"data-cell-index='5'></div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm"data-cell-index='6'></div>
+    <div class="col-sm"data-cell-index='7'></div>
+    <div class="col-sm"data-cell-index='8'></div>
+  </div>
+</div>
+</section>
+      <h2> Sign Up </h2>
+      <form id= "Sign Up">
+  <input type='text' name="credentials[email]"placeholder="email">
+  <input type='text' name="credentials[password]"placeholder="password">
+  <input type ="text" name="credentials[passwordconfirmation]"placeholder="password confirmtion">
+  <input type ='Submit' value='Submit'>
+  </form>
+    <h2> Sign In </h2>
+  <form id="Sign In">
+  <input type="text" name="credentials[email]"placeholder="email">
+  <input type="text" name="credentials[password]"placeholder="password">
+  <input type='Submit' value= 'Submit'>
+</form>
+  <h2> Change Password </h2>
+  <form id="Change-Password">
+  <input type="text" name="password[old]" placeholder="old">
+  <input type="text" name="password[new]" placeholder="new">
+  <input type="Submit" value="Submit">
+</form>
+  <h2> Sign Out </h2>
+  <form id="Sign-Out">
+    <input type="Submit" name="Sign Out">
+  </form>
+
+
+
     </body>
 </html>

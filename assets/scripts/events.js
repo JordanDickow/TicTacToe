@@ -28,40 +28,7 @@ const winCombo = {
 
 }
 
-// I'm going to write a function
-const checkWin = function () {
-  if(gameGrid[1].textContent === "X" &&
-  win[2].textContent === "X" &&
-  board[3].textContent === "X"
-) { alert("Win")}
-else if (
-  board[3].textContent === "X" &&
-  board[4].textContent === "X" &&
-  board[5].textContent === "X"
-) { alert("Win")}
- else if (
-  board[6].textContent === "X" &&
-  board[7].textContent === "X" &&
-  board[8].textContent === "X"
-) { alert("Win")}
-
-}
-
-}
-// function to check for win condition
-// const winCon = function () {
-//
-//     console.log('Check for winner')
-//   } else {
-//     console.log('keep going')
-//   }
-//   if (winCon === true) {
-//     console.log('win')
-//     // stop game?
-//   } else {
-//     console.log('Keep Going')
-//   }
-// }
+// I'm going to write a function to check for  a win condition
 // connects events.js to api
 const api = require('./api')
 // connects events.js to ui
@@ -75,14 +42,30 @@ const onClick = event => {
     gameGrid[index] = currentPlayer
     console.log(gameGrid)
     $(event.target).text(currentPlayer)
-// calling switchPlayer fucntion
-    switchPlayer()
+    const winCombo = function () {
+    if (gameGrid[0] !== '' && gameGrid[0] === gameGrid[1] === gameGrid[1] === gameGrid[2] ||
+      gameGrid[3] !== '' && gameGrid[3] === gameGrid[4] === gameGrid[4] === gameGrid[5] ||
+      gameGrid[6] !== '' && gameGrid[6] === gameGrid[7] === gameGrid[7] === gameGrid[8] ||
+      gameGrid[0] !== '' && gameGrid[0] === gameGrid[3] === gameGrid[3] === gmaeGid[8] ||
+      gameGrid[1] !== '' && gameGrid[1] === gameGrid[4] === gameGrid[4] === gameGrid[7] ||
+      gameGrid[2] !== '' && gameGrid[2] === gameGrid[5] === gameGrid[5] === gameGrid[8] ||
+      gameGrid[2] !== '' && gameGrid[2] === gameGrid[4] === gameGrid[4] === gameGrid[6] ||
+      gameGrid[0] !== '' && gameGrid[0] == gameGrid[4] === gameGrid[4] === gameGrid[8])
+      {
+        console.log('You Win!')
+      } else {
+        console.log('Keeg Going')
+      }
 
-  }
+
+
+
+switchPlayer()
+
   // api.create(formData)
   //   .then(ui.onClickeSuccess)
   //   .catch(ui.onClickFailure)
-}
+
 // exports onClick
 module.exports = {
   onClick
