@@ -8,6 +8,12 @@ const events = require('./events')
 
 $(() => {
   $('.col-sm').on('click', events.onClick)
+  $('#Sign-Up').on('Submit', events.onSignUp)
+  $('#Sign-In').on('Submit', events.OnSignIn)
+  $('#Change-Password').on('Submit', events.onChangePassword)
+  $('#Sign-Out').on('Submit', events.onSignOut)
+  // Update game events to API?
+  $('.col-sm').on('click', events.onGamePlay)
 })
 
 // const switchPlayer = function (turn) {

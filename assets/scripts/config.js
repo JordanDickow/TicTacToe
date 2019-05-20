@@ -1,12 +1,9 @@
 'use strict'
 
-'https://tic-tac-toe-wdi.herokuapp.com/'
-'https://tic-tac-toe-wdi-production.herokuapp.com'
-
 let apiUrl
 const apiUrls = {
-  production: '<replace-with-heroku-url>',
-  development: 'http://localhost:4741'
+  development: 'https://tic-tac-toe-wdi.herokuapp.com/',
+  production: 'https://tic-tac-toe-wdi-production.herokuapp.com'
 }
 
 if (window.location.hostname === 'localhost') {

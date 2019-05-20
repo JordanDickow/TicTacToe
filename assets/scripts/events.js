@@ -1,8 +1,11 @@
 'use strict'
+const getFormFields = require('../../get-form-fields')
+const api = require('./api')
+const ui = require('./ui')
 // sets variable for current player
 let currentPlayer = 'X'
 // Writes function when to switch player
-const switchPlayer = function () {
+const switchPlayer = function() {
   if (currentPlayer === 'X') {
     currentPlayer = 'O'
   } else {
@@ -30,9 +33,9 @@ const winCombo = {
 
 // I'm going to write a function to check for  a win condition
 // connects events.js to api
-const api = require('./api')
+
 // connects events.js to ui
-const ui = require('./ui')
+
 // onClick function to alternate players
 const onClick = event => {
   const text = $(event.target).text()
@@ -43,31 +46,81 @@ const onClick = event => {
     console.log(gameGrid)
     $(event.target).text(currentPlayer)
     const winCombo = function () {
-    if (gameGrid[0] !== '' && gameGrid[0] === gameGrid[1] === gameGrid[1] === gameGrid[2] ||
-      gameGrid[3] !== '' && gameGrid[3] === gameGrid[4] === gameGrid[4] === gameGrid[5] ||
-      gameGrid[6] !== '' && gameGrid[6] === gameGrid[7] === gameGrid[7] === gameGrid[8] ||
-      gameGrid[0] !== '' && gameGrid[0] === gameGrid[3] === gameGrid[3] === gmaeGid[8] ||
-      gameGrid[1] !== '' && gameGrid[1] === gameGrid[4] === gameGrid[4] === gameGrid[7] ||
-      gameGrid[2] !== '' && gameGrid[2] === gameGrid[5] === gameGrid[5] === gameGrid[8] ||
-      gameGrid[2] !== '' && gameGrid[2] === gameGrid[4] === gameGrid[4] === gameGrid[6] ||
-      gameGrid[0] !== '' && gameGrid[0] == gameGrid[4] === gameGrid[4] === gameGrid[8])
-      {
+      if (gameGrid[0] !== '' && gameGrid[0] === gameGrid[1] === gameGrid[1] === gameGrid[2] &&
+        gameGrid[3] !== '' && gameGrid[3] === gameGrid[4] === gameGrid[4] === gameGrid[5] &&
+        gameGrid[6] !== '' && gameGrid[6] === gameGrid[7] === gameGrid[7] === gameGrid[8] &&
+        gameGrid[0] !== '' && gameGrid[0] === gameGrid[3] === gameGrid[3] === gameGrid[8] &&
+        gameGrid[1] !== '' && gameGrid[1] === gameGrid[4] === gameGrid[4] === gameGrid[7] &&
+        gameGrid[2] !== '' && gameGrid[2] === gameGrid[5] === gameGrid[5] === gameGrid[8] &&
+        gameGrid[2] !== '' && gameGrid[2] === gameGrid[4] === gameGrid[4] === gameGrid[6] &&
+        gameGrid[0] !== '' && gameGrid[0] === gameGrid[4] === gameGrid[4] === gameGrid[8]) {
         console.log('You Win!')
+        console.log('Freeze Screen')
       } else {
         console.log('Keeg Going')
       }
-
-
-
-
+    }
+  }
+}
+// reset button
+// document.getElementById("reset").onclick = function() {
+//    document.getElementById("numbers").innerHTML = "";
+// };
 switchPlayer()
 winCombo()
 
-  // api.create(formData)
-  //   .then(ui.onClickeSuccess)
-  //   .catch(ui.onClickFailure)
+const onSignUp = event => {
+  event.preventDefault()
+  const form = event.target
+  const formData = getFormFields(form)
+  api.onSignUp(formData)
+    .then(ui.onSignUpSuccess)
+    .catch(ui.onSignUpFailure)
+}
 
-// exports onClick
+const onSignIn = event => {
+  event.preventDefault()
+  const form = event.target
+  const formData = getFormFields(form)
+  api.onSignUp(formData)
+    .then(ui.onSignInSuccess)
+    .catch(ui.onSignInFailure)
+}
+
+const onChangePassword = event => {
+  event.preventDefault()
+  const form = event.target
+  const formData = getFormFields(form)
+  api.onChangePassword(formData)
+    .then(ui.onChangePasswordSuccess)
+    .catch(ui.onChangePasswordFailure)
+}
+
+const onSignOut = event => {
+  event.preventDefault()
+  const form = event.target
+  const formData = getFormFields(form)
+  api.onChangePassword(formData)
+    .then(ui.onChangePasswordSuccess)
+}
+
+const onGamePlay = $(event.target).text()
+if (text === '') {
+  const index = $(event.target).data('cell-index')
+  console.log(index)
+  gameGrid[index] = currentPlayer
+  console.log(gameGrid)
+  $(event.target).text(currentPlayer)
+  api.onGamePlay(event)
+    .then(ui.onGamePlaySuccess)
+}
+
+// exports everything in events
 module.exports = {
-  onClick
+  onClick,
+  onSignUp,
+  onSignIn,
+  onChangePassword,
+  onSignOut,
+  onGamePlay
 }
