@@ -4,6 +4,7 @@ const onSignUpSuccess = responsedata => {
   console.log('success', responsedata)
   const text = responsedata.events.text
   $('#message').text('created' + text)
+  console.log('Nice going!')
   $('#message').removeClass()
   $('#message').addClass('success')
 }

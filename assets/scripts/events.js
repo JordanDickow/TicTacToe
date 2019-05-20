@@ -3,13 +3,13 @@ const getFormFields = require('../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
 // sets variable for current player
-let currentPlayer = 'X'
+let currentPlayer = 'O'
 // Writes function when to switch player
 const switchPlayer = function () {
-  if (currentPlayer === 'X') {
-    currentPlayer = 'O'
-  } else {
+  if (currentPlayer === 'O') {
     currentPlayer = 'X'
+  } else {
+    currentPlayer = 'O'
   }
 }
 // board positions
@@ -34,7 +34,7 @@ const winCondition = function () {
     gameGrid[0] !== '' && gameGrid[0] === gameGrid[4] === gameGrid[4] === gameGrid[8]) {
     console.log('You Win!')
   } else {
-    console.log('Keeg Going')
+    console.log('Keep Going')
   }
 }
 const onClick = event => {
@@ -88,7 +88,7 @@ const onSignOut = event => {
   const form = event.target
   const formData = getFormFields(form)
   api.onChangePassword(formData)
-    .then(ui.onChangePasswordSuccess)
+    .then(ui.onSignOutSuccess)
 }
 
 const onGamePlay = text => {
@@ -96,8 +96,6 @@ const onGamePlay = text => {
     const index = $(event.target).data('cell-index')
     console.log(index)
     gameGrid[index] = currentPlayer
-    console.log(gameGrid)
-    $(event.target).text(currentPlayer)
     api.onGamePlay(event)
       .then(ui.onGamePlaySuccess)
   }
