@@ -49,7 +49,7 @@ const onClick = event => {
     switchPlayer()
   }
 }
-// reset button
+
 // document.getElementById("reset").onclick = function() {
 //    document.getElementById("numbers").innerHTML = "";
 // };
