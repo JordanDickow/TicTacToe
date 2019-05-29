@@ -60,16 +60,30 @@ const onPasswordFailure = responsedata => {
   $('#message').addClass('failure')
 }
 
-const onGamePlaySuccess = responsedata => {
-  console.log('failure', responsedata)
+const onSignOutSuccess = responseData => {
+  console.log('success', responseData)
   $('#messge').html('')
-  const events = responsedata.events.text
+  const events = responseData.events.text
   events.forEach(events => {
     $('#message').append(`<p>${events.id}: ${events.text}</p>`)
   })
   $('#message').removeClass('success')
   $('#message').addClass('failure')
 }
+
+const onCreateGameSuccess = responseData => {
+  console.log('success', responseData)
+  $('#message').text('Game Created!')
+    .addClass('success')
+    .removeClass('failure')
+}
+
+const onCreateGameFailure = () => {
+  $('#message').text('Whoops Sorry!')
+    .addClass('failure')
+    .removeClass('success')
+}
+
 module.exports = {
   onSignUpSuccess,
   onSignUpFailure,
@@ -77,5 +91,8 @@ module.exports = {
   onSignInFailure,
   onPasswordSuccess,
   onPasswordFailure,
-  onGamePlaySuccess
+  onSignOutSuccess,
+  onCreateGameSuccess,
+  onCreateGameFailure
+
 }

@@ -3,26 +3,18 @@ const getFormFields = require('../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
 // sets variable for current player
-let currentPlayer = 'O'
+let currentPlayer = 'X'
 // Writes function when to switch player
 const switchPlayer = function () {
-  if (currentPlayer === 'O') {
-    currentPlayer = 'X'
-  } else {
+  if (currentPlayer === 'X') {
     currentPlayer = 'O'
+  } else {
+    currentPlayer = 'X'
   }
 }
 // board positions
 const gameGrid = ['', '', '', '', '', '', '', '', '']
 
-// game board should be array of 9 empty strings to start
-// Winning comnbinations
-// I'm going to write a function to check for  a win condition
-// connects events.js to api
-
-// connects events.js to ui
-
-// onClick function to alternate players
 const winCondition = function () {
   if (gameGrid[0] !== '' && gameGrid[0] === gameGrid[1] === gameGrid[1] === gameGrid[2] &&
     gameGrid[3] !== '' && gameGrid[3] === gameGrid[4] === gameGrid[4] === gameGrid[5] &&
@@ -34,9 +26,10 @@ const winCondition = function () {
     gameGrid[0] !== '' && gameGrid[0] === gameGrid[4] === gameGrid[4] === gameGrid[8]) {
     console.log('You Win!')
   } else {
-    console.log('Keep Going')
+
   }
 }
+
 const onClick = event => {
   const text = $(event.target).text()
   if (text === '') {
@@ -45,6 +38,7 @@ const onClick = event => {
     gameGrid[index] = currentPlayer
     console.log(gameGrid)
     $(event.target).text(currentPlayer)
+    api.updateGame(currentPlayer, gameGrid)
     winCondition()
     switchPlayer()
   }
@@ -91,14 +85,14 @@ const onSignOut = event => {
     .then(ui.onSignOutSuccess)
 }
 
-const onGamePlay = text => {
-  if (text === '') {
-    const index = $(event.target).data('cell-index')
-    console.log(index)
-    gameGrid[index] = currentPlayer
-    api.onGamePlay(event)
-      .then(ui.onGamePlaySuccess)
-  }
+const onCreateGame = event => {
+  event.preventDefault()
+  console.log('Game Created!')
+  const form = event.target
+  const formData = getFormFields(form)
+  api.onCreateGame(formData)
+    .then(ui.onCreatGameSuccess)
+    .catch(ui.onCreateGameFailure)
 }
 
 // exports everything in events
@@ -108,5 +102,5 @@ module.exports = {
   onSignIn,
   onChangePassword,
   onSignOut,
-  onGamePlay
+  onCreateGame
 }

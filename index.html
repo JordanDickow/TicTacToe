@@ -40,35 +40,33 @@
 </div>
 </section>
       <h2> Sign Up </h2>
-      <form id= "Sign-Up">
-  <input type='text' name="credentials[email]"placeholder="email">
-  <input type='text' name="credentials[password]"placeholder="password">
-  <input type ="text" name="credentials[passwordconfirmation]"placeholder="password confirmtion">
-  <input type ='Submit' value='Submit'>
+      <form id="Sign-Up">
+  <input type='email' name="credentials[email]"placeholder="email">
+  <input type='password' name="credentials[password]"placeholder="password">
+  <input type ="password" name="credentials[password_confirmation]" placeholder="password confirmtion">
+  <input type ='submit' value='Submit'>
   </form>
     <h2> Sign In </h2>
   <form id="Sign-In">
-  <input type="text" name="credentials[email]"placeholder="email">
-  <input type="text" name="credentials[password]"placeholder="password">
-  <input type='Submit' value= 'Submit'>
+  <input name="credentials[email]"  type="text" placeholder="an@example.email">
+  <input name="credentials[password]" type="password" placeholder="password">
+  <input type='submit' value='Submit'>
 </form>
   <h2> Change Password </h2>
   <form id="Change-Password">
-  <input type="text" name="password[old]" placeholder="old">
-  <input type="text" name="password[new]" placeholder="new">
-  <input type="Submit" value="Submit">
+  <input name="passwords[old]" type="password" placeholder="old password">
+  <input name="passwords[new]" type="password" placeholder= "new password">
+  <input type="submit" value="Submit">
 </form>
   <h2> Sign Out </h2>
   <form id="Sign-Out">
-    <input type="Submit" name="Sign Out">
+    <input type="submit" name="Sign Out">
   </form>
-  <h2> Reset </h2>
-  <input type="Reset" name= "Reset">
 
-  <h2> Game History </h2>
-  <form id="Game-History">
-  <input type= "game-history" name= "game-history">
-</form>
+
+<h2> New Game </h2>
+<form id="create-game">
+<button type="button">Create</button>
 
 
 

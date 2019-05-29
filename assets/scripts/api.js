@@ -2,7 +2,7 @@
 const config = require('./config')
 const store = require('./store')
 
-const create = formData => {
+const signUp = formData => {
   console.log('from api create')
   console.log('store is', store)
   return $.ajax({
@@ -16,9 +16,9 @@ const create = formData => {
 }
 const signIn = (formData) => {
   console.log('from api sign in')
-  console.log('from store', store)
+  console.log('store is', store)
   return $.ajax({
-    url: config.apiUrl + '/sign-in',
+    url: config.apiUrl + `/sign-in`,
     method: 'POST',
     data: formData,
     headers: {
@@ -40,7 +40,7 @@ const update = (formData) => {
   })
 }
 
-const byeBye = (formData) => {
+const signout = (formData) => {
   console.log('from api sign out')
   console.log('from store', store)
   return $.ajax({
@@ -53,24 +53,43 @@ const byeBye = (formData) => {
   })
 }
 
-const gamePlay = (formData) => {
-  console.log('from api game play')
-  console.log('from store', store)
+const createGame = (formData) => {
+  console.log('Game Created', store)
   return $.ajax({
-    url: config.apiUrl + '/events',
-    method: 'PATCH',
-    data: formData,
+    url: config.apiUrl + `/games`,
+    method: 'POST',
     headers: {
-      Authorization: 'Token taken=' + store.user.token
-    }
+      Authorizaton: 'Token taken=' + store.user.token
+    },
+    data: '{}'
   })
 }
 
+const updateGame = (index, value, over) => {
+  console.log('Game Updated', store)
+  return $.ajax({
+    url: config.apiUrl + `/games/${store.game.ID}`,
+    method: 'PATCH',
+    headers: {
+      Authorizaton: 'Token taken=' + store.user.token
+    },
+    data: {
+      game: {
+        cell: {
+          index: index,
+          value: value
+        },
+        over: over
+      }
+    }
+  })
+}
 module.exports = {
-  create,
+  signUp,
   signIn,
   update,
-  byeBye,
-  gamePlay
+  signout,
+  createGame,
+  updateGame
 
 }
