@@ -68,7 +68,7 @@ const createGame = (formData) => {
 const updateGame = (index, value, over) => {
   console.log('Game Updated', store)
   return $.ajax({
-    url: config.apiUrl + `/games/${store.game.ID}`,
+    url: config.apiUrl + `/games/${store.game.id}`,
     method: 'PATCH',
     headers: {
       Authorizaton: 'Token taken=' + store.user.token

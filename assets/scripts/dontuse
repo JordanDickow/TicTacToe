@@ -3,13 +3,13 @@ const getFormFields = require('../../lib/get-form-fields')
 const api = require('./api')
 const ui = require('./ui')
 // sets variable for current player
-let currentPlayer = 'X'
+let currentPlayer = 'O'
 // Writes function when to switch player
 const switchPlayer = function () {
-  if (currentPlayer === 'X') {
-    currentPlayer = 'O'
-  } else {
+  if (currentPlayer === 'O') {
     currentPlayer = 'X'
+  } else {
+    currentPlayer = 'O'
   }
 }
 // board positions
@@ -38,15 +38,12 @@ const onClick = event => {
     gameGrid[index] = currentPlayer
     console.log(gameGrid)
     $(event.target).text(currentPlayer)
-    api.updateGame(currentPlayer, gameGrid)
+    api.updateGame()
     winCondition()
     switchPlayer()
   }
 }
 
-// document.getElementById("reset").onclick = function() {
-//    document.getElementById("numbers").innerHTML = "";
-// };
 switchPlayer()
 winCondition()
 
@@ -91,7 +88,7 @@ const onCreateGame = event => {
   const form = event.target
   const formData = getFormFields(form)
   api.onCreateGame(formData)
-    .then(ui.onCreatGameSuccess)
+    .then(ui.onCreateGameSuccess)
     .catch(ui.onCreateGameFailure)
 }
 

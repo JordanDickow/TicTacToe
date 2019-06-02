@@ -1,6 +1,5 @@
 'use strict'
 const store = require('../store')
-// const data = require('../data')
 
 const onSignUpSuccess = responseData => {
   console.log('success', responseData)
@@ -16,13 +15,12 @@ const onSignUpFailure = responseData => {
     .removeClass('success')
 }
 
-const onSignInSuccess = responseData => {
-  console.log('success', responseData)
+const onSignInSuccess = data => {
+  store.user = data.user
+  console.log('success', store.user)
   $('#message').text('Sign In Success!! :D')
     .addClass('success')
     .removeClass('failure')
-  store.user = responseData.user
-  console.log('store is')
 }
 
 const onSignInFailure = responseData => {
@@ -56,23 +54,34 @@ const onSignOutFailure = () => {
     .removeClass('success')
 }
 
-const onCreateGameSuccess = () => {
+const onCreateGameSuccess = (data) => {
+  store.game = data.game
+  console.log(store.game)
   $('#message').text('Game Created!')
+  $('#message').text(`it's X/s turn`)
     .addClass('success')
     .removeClass('failure')
 }
 
-const onCreateGameFailure = () => {
+const onCreateGameFailure = (data) => {
+  store.game = data.game
   $('#message').text('Whoops Sorry!')
     .addClass('failure')
     .removeClass('success')
 }
 
-const onUpdateGameSuccess = (store) => {
+const onUpdateGameSuccess = () => {
 
 }
 
 const onUpdateGameFailure = () => {
+
+}
+const onAllGamesSuccess = () => {
+  $('#message').text('Toal Games Played:' + store.game.over)
+}
+
+const onAllGamesFailure = () => {
 
 }
 module.exports = {
@@ -87,6 +96,8 @@ module.exports = {
   onCreateGameSuccess,
   onCreateGameFailure,
   onUpdateGameSuccess,
-  onUpdateGameFailure
+  onUpdateGameFailure,
+  onAllGamesSuccess,
+  onAllGamesFailure
 
 }

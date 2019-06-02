@@ -34,7 +34,6 @@ const changePassword = formData => {
 }
 
 const onSignOut = () => {
-  console.log('from api sign out')
   console.log('store is', store)
   return $.ajax({
     url: config.apiUrl + '/sign-out',
@@ -45,33 +44,46 @@ const onSignOut = () => {
   })
 }
 const onCreateGame = () => {
-  console.log('Game Created', store)
+  console.log(store)
   return $.ajax({
     url: config.apiUrl + `/games`,
     method: 'POST',
     headers: {
       Authorization: 'Token token=' + store.user.token
     },
-    data: {}
+    data: '{}'
   })
 }
 
-const onUpdateGame = (index, value, over) => {
-  console.log('Game Updated', store)
+const onUpdateGame = (index, value, winCondition) => {
+  console.log(store.user.token)
   return $.ajax({
     url: config.apiUrl + `/games/${store.game.id}`,
     method: 'PATCH',
+
     headers: {
-      Authorizaton: 'Token taken=' + store.user.token
+      Authorization: 'Token token=' + store.user.token
     },
+
     data: {
       game: {
         cell: {
           index: index,
           value: value
         },
-        over: over
+        over: store.game.over
       }
+    }
+  })
+}
+
+const onAllGames = () => {
+  return $.ajax({
+    url: config.apiUrl + `/games`,
+    method: 'GET',
+    contentType: 'application/json',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
     }
   })
 }
@@ -82,6 +94,6 @@ module.exports = {
   changePassword,
   onSignOut,
   onCreateGame,
-  onUpdateGame
-
+  onUpdateGame,
+  onAllGames
 }
