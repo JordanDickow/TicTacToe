@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <title>Tic Tac Toe</title>
+
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+
+      <!-- Do not add `link` tags-->
+      <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+      <!-- Do not add `script` tags-->
+      <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
+      <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
+    </head>
+    <body>
+
+      <h1>Tic Tac Toe</h1>
+      <div id="message"></div>
+      <div id="endmessage"></div>
+      <section>
+        <div class="container">
+  <div class="row">
+    <div class="col-sm" data-cell-index='0'></div>
+    <div class="col-sm" data-cell-index='1'></div>
+    <div class="col-sm" data-cell-index='2'></div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm"data-cell-index='3'></div>
+    <div class="col-sm"data-cell-index='4'></div>
+    <div class="col-sm"data-cell-index='5'></div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-sm"data-cell-index='6'></div>
+    <div class="col-sm"data-cell-index='7'></div>
+    <div class="col-sm"data-cell-index='8'></div>
+  </div>
+</div>
+</section>
+      <h2> Sign Up </h2>
+      <form id="Sign-Up">
+  <input type='email' name="credentials[email]"placeholder="email">
+  <input type='password' name="credentials[password]"placeholder="password">
+  <input type ="password" name="credentials[password_confirmation]" placeholder="password confirmtion">
+  <input type ='submit' value='Submit'>
+  </form>
+    <h2> Sign In </h2>
+  <form id="Sign-In">
+  <input name="credentials[email]"  type="text" placeholder="an@example.email">
+  <input name="credentials[password]" type="password" placeholder="password">
+  <input type='submit' value='Submit'>
+</form>
+  <h2> Change Password </h2>
+  <form id="Change-Password">
+  <input name="passwords[old]" type="password" placeholder="old password">
+  <input name="passwords[new]" type="password" placeholder= "new password">
+  <input type="submit" value="Submit">
+</form>
+  <h2> Sign Out </h2>
+  <form id="Sign-Out">
+    <input type="submit" name="Sign Out">
+  </form>
+
+
+<h2> New Game </h2>
+<form id="create-game">
+<button type="button">Create</button>
+</form>
+
+<div id"createmessage"></div>
+<div id"endcreatemessage"></div>
+<h2> Game History </h2>
+<form id="all-games">
+<button type="button">Get</button>
+</form>
+
+
+
+    </body>
+</html>
