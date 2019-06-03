@@ -35,7 +35,7 @@ const onSignUp = event => {
   event.preventDefault()
   const form = event.target
   const formData = getFormFields(form)
-  console.log('sign up successful!', formData)
+  console.log(formData)
   api.signUp(formData)
     .then(ui.onSignUpSuccess)
     .catch(ui.onSignUpFailure)
@@ -45,7 +45,7 @@ const onSignIn = event => {
   event.preventDefault()
   const form = event.target
   const formData = getFormFields(form)
-  console.log('sign in pressed', formData)
+  console.log(formData)
   api.signIn(formData)
     .then(ui.onSignInSuccess)
     .catch(ui.onSignInFailure)
@@ -55,7 +55,7 @@ const onChangePassword = event => {
   event.preventDefault()
   const form = event.target
   const formData = getFormFields(form)
-  console.log('password updated!', formData)
+  console.log(formData)
   api.changePassword(formData)
     .then(ui.onChangePasswordSuccess)
     .catch(ui.onChangePasswordFailure)
@@ -65,7 +65,7 @@ const onSignOut = event => {
   event.preventDefault()
   const form = event.target
   const formData = getFormFields(form)
-  console.log('sign out pressed', formData)
+  console.log(formData)
   api.onSignOut(formData)
     .then(ui.onSignOutSuccess)
     .catch(ui.onSignOutFailure)

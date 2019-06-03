@@ -2,14 +2,14 @@
 const store = require('../store')
 
 const onSignUpSuccess = responseData => {
-  console.log('success', responseData)
+  console.log(responseData)
   $('#message').text('Signed up successfully!')
     .addClass('success')
     .removeClass('failure')
 }
 
 const onSignUpFailure = responseData => {
-  console.log('failure', responseData)
+  console.log(responseData)
   $('#message').text('Sign Up failed :///')
     .addClass('failure')
     .removeClass('success')
@@ -17,14 +17,14 @@ const onSignUpFailure = responseData => {
 
 const onSignInSuccess = data => {
   store.user = data.user
-  console.log('success', store.user)
+  console.log(store.user)
   $('#message').text('Sign In Success!! :D')
     .addClass('success')
     .removeClass('failure')
 }
 
 const onSignInFailure = responseData => {
-  console.log('failure', responseData)
+  console.log(responseData)
   $('#message').text('Sign in failed :,,,()')
     .addClass('failure')
     .removeClass('success')

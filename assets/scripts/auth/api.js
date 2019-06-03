@@ -3,7 +3,7 @@ const config = require('../config')
 const store = require('../store')
 
 const signUp = formData => {
-  console.log('from api signUp', formData)
+  console.log(formData)
   return $.ajax({
     url: config.apiUrl + '/sign-up',
     method: 'POST',
@@ -12,7 +12,7 @@ const signUp = formData => {
 }
 
 const signIn = formData => {
-  console.log('from api signIn', store)
+  console.log(store)
   return $.ajax({
     url: config.apiUrl + `/sign-in`,
     method: 'POST',
@@ -21,7 +21,7 @@ const signIn = formData => {
 }
 
 const changePassword = formData => {
-  console.log('from api change password', store)
+  console.log(store)
   console.log('store is', store)
   return $.ajax({
     url: config.apiUrl + '/change-password',
@@ -34,7 +34,7 @@ const changePassword = formData => {
 }
 
 const onSignOut = () => {
-  console.log('store is', store)
+  console.log(store)
   return $.ajax({
     url: config.apiUrl + '/sign-out',
     method: 'DELETE',
