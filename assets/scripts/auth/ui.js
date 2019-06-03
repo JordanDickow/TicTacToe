@@ -57,6 +57,7 @@ const onSignOutFailure = () => {
 const onCreateGameSuccess = (data) => {
   store.game = data.game
   console.log(store.game)
+  $('section').show()
   $('#message').text('Game Created!')
   $('#message').text(`it's X/s turn`)
     .addClass('success')
@@ -77,8 +78,8 @@ const onUpdateGameSuccess = () => {
 const onUpdateGameFailure = () => {
 
 }
-const onAllGamesSuccess = () => {
-  $('#message').text('Toal Games Played:' + store.game.over)
+const onAllGamesSuccess = (data) => {
+  $('#message').text('Toal Games Played:' + data.games.length)
 }
 
 const onAllGamesFailure = () => {

@@ -7,6 +7,7 @@ const authEvents = require('./auth/events')
 // require('./example')
 
 $(() => {
+  $('section').hide()
   $('.col-sm').on('click', authEvents.onClick)
   $('#Sign-Up').on('submit', authEvents.onSignUp)
   $('#Sign-In').on('submit', authEvents.onSignIn)
