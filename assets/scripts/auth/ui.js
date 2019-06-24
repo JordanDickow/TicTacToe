@@ -1,7 +1,7 @@
 'use strict'
 const store = require('../store')
-
 const onSignUpSuccess = responseData => {
+  $('section').show()
   console.log(responseData)
   $('#message').text('Signed up successfully!')
     .addClass('success')
@@ -79,7 +79,7 @@ const onUpdateGameFailure = () => {
 
 }
 const onAllGamesSuccess = (data) => {
-  $('#message').text('Toal Games Played:' + data.games.length)
+  $('.message6').text('Toal Games Played:' + data.games.length)
 }
 
 const onAllGamesFailure = () => {
