@@ -1,6 +1,7 @@
 'use strict'
 const store = require('../store')
 const onSignUpSuccess = responseData => {
+  $('.jello').toggle()
   $('section').show()
   console.log(responseData)
   $('#message').text('Signed up successfully!')
@@ -11,23 +12,24 @@ const onSignUpSuccess = responseData => {
 const onSignUpFailure = responseData => {
   console.log(responseData)
   $('#message').text('Sign Up failed :///')
-    .addClass('failure')
-    .removeClass('success')
+  setTimeout(function () {
+    $('#message').hide()
+  }, 2000)
 }
 
 const onSignInSuccess = data => {
   store.user = data.user
   console.log(store.user)
+  $('.hello').toggle()
   $('#message').text('Sign In Success!! :D')
-    .addClass('success')
-    .removeClass('failure')
+  setTimeout(function () {
+    $('#message').hide()
+  }, 2000)
 }
 
 const onSignInFailure = responseData => {
   console.log(responseData)
-  $('#message').text('Sign in failed :,,,()')
-    .addClass('failure')
-    .removeClass('success')
+  $('#message').text('Sign in Failed')
 }
 
 const onChangePasswordSuccess = () => {
@@ -43,6 +45,9 @@ const onChangePasswordFailure = () => {
 }
 
 const onSignOutSuccess = () => {
+  $('.jello').toggle()
+  $('.hello').toggle()
+  $('section').toggle()
   $('#message').text('Sign Out Successful')
     .addClass('success')
     .removeClass('failure')
@@ -50,8 +55,6 @@ const onSignOutSuccess = () => {
 
 const onSignOutFailure = () => {
   $('#message').text('Sign Out Failed')
-    .addClass('failure')
-    .removeClass('success')
 }
 
 const onCreateGameSuccess = (data) => {
@@ -67,8 +70,6 @@ const onCreateGameSuccess = (data) => {
 const onCreateGameFailure = (data) => {
   store.game = data.game
   $('#message').text('Whoops Sorry!')
-    .addClass('failure')
-    .removeClass('success')
 }
 
 const onUpdateGameSuccess = () => {
